@@ -5,7 +5,7 @@ public class Balanza {
 	private double precioTotal;
 	private double pesoTotal;
 	
-	public Balanza() { // consultar
+	public Balanza() {
 		ponerEnCero();
 	}
 	
@@ -18,13 +18,14 @@ public class Balanza {
 	public void agregarProducto(Producto producto) {
 		this.cantidadDeProductos++;
 		this.pesoTotal = this.pesoTotal+ producto.getPeso();
-		this.precioTotal = this.precioTotal + (producto.getPrecio()); // no correspondería realizarlo en el producto 
-														   			  //ya que es la balanza quien obtiene este calculo, 
-														   			  // un producto no puede calcular su precio total
+		this.precioTotal = this.precioTotal + (producto.getPrecio());
 	}
 	
 	public Ticket emitirTicket() {
-		Ticket ticket = new Ticket(this.getCantidadDeProductos(), this.getPesoTotal(), this.getPrecioTotal());
+		int qProductos = this.getCantidadDeProductos();
+		double pesoTotal = this.getPesoTotal();
+		double precioTotal = this.getPrecioTotal(); // se agregan variables que obtienen los valores de los atributos para no enviar como parámetro la referencia de mi atributo. sería como "pasar por valor" los atributos
+		Ticket ticket = new Ticket(qProductos, pesoTotal, precioTotal);
 		return ticket;
 	}
 

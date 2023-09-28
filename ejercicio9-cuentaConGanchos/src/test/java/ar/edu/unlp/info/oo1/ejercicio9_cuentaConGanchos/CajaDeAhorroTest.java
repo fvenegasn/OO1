@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+// los tests se pueden hacer más robustos agregando más verificaciones en cada uno de los casos de las operaciones
 
 public class CajaDeAhorroTest {
 

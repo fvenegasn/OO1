@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Balanza {
 	private List<Producto> productos;
 	
-	public Balanza() { // consultar
+	public Balanza() {
 		ponerEnCero();
 	}
 	
@@ -19,7 +19,8 @@ public class Balanza {
 	}
 	
 	public Ticket emitirTicket() {
-		Ticket ticket = new Ticket(this.getProductos());
+		List<Producto> productosEnTicket = this.getProductos();
+		Ticket ticket = new Ticket(productosEnTicket);
 		return ticket;
 	}
 

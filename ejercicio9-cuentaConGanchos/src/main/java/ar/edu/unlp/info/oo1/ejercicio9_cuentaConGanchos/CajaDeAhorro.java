@@ -13,22 +13,22 @@ public class CajaDeAhorro extends Cuenta {
 		return false;
 	}
 	
+	@Override
 	public void depositar(double monto) {
-		super.depositar(monto);
-		this.extraerSinControlar(this.impuesto(monto));
+		super.depositar(monto-this.impuesto(monto));
 	}
 	
-	public boolean extraer(double monto) {
-		if (super.extraer(monto)) {
-			this.extraerSinControlar(this.impuesto(monto));
+	@Override
+	public boolean extraer(double monto) { // no lo puedo convertir a sentencia única porque sino no puedo devolver true o false en base a la operación, sino que me queda void
+		if (super.extraer(monto+this.impuesto(monto))) {
 			return true;
 		}
 		return false;
 	}
 	
-	public boolean transferirACuenta(double monto, Cuenta cuentaDestino) {
-		if (super.transferirACuenta(monto, cuentaDestino)) {
-			this.extraerSinControlar(this.impuesto(monto));
+	@Override
+	public boolean transferirACuenta(double monto, Cuenta cuentaDestino) { // idem
+		if (super.transferirACuenta(monto+this.impuesto(monto), cuentaDestino)) {
 			return true;
 		}
 		return false;

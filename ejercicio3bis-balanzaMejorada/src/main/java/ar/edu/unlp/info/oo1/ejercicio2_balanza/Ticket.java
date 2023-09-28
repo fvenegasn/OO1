@@ -26,7 +26,7 @@ public class Ticket {
 		return fecha;
 	}
 
-	// no los estoy calculando dos veces de la misma forma en dos distintas clases?
+	// no los estoy calculando dos veces de la misma forma en dos distintas clases? -> es casualidad y está bien que sea así
 	public int getCantidadDeProductos() {
 		return this.productos.size();
 	}
@@ -38,7 +38,5 @@ public class Ticket {
 	public double getPrecioTotal() {
 		return this.productos.stream().mapToDouble(producto -> producto.getPrecio()).sum();
 	}
-	
-	
 	
 }
