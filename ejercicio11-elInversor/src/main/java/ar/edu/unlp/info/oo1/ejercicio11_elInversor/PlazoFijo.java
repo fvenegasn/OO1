@@ -7,7 +7,7 @@ public class PlazoFijo implements Inversion {
 	
 	private LocalDate fechaDeConstitucion;
 	private double montoDepositado;
-	private double porcentajeDeInteres;
+	private double porcentajeDeInteres; // se da entre 0 y 1. p.e: 25% = 0.25
 	
 	public PlazoFijo(LocalDate fecha, double monto, double porcentaje) {
 		this.fechaDeConstitucion=fecha;
