@@ -14,12 +14,10 @@ public class Esfera extends Pieza{
 	}
 	
 	public double getVolumen() {
-		double volumen = ((double) 4/3) * Math.PI * Math.pow(this.getRadio(), 3);
-		return volumen;
+		return ((double) 4/3) * Math.PI * Math.pow(this.getRadio(), 3);
 	}
 	
 	public double getSuperficieExterna() {
-		double superficieExterna = 4*Math.PI*radio*radio;
-		return superficieExterna;
+		return 4*Math.PI*radio*radio;
 	}
 }

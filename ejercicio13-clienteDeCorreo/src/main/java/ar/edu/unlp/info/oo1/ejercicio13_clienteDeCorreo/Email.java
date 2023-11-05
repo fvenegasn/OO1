@@ -38,4 +38,8 @@ public class Email {
 				.sum();
 		return this.getTitulo().length() + this.getCuerpo().length() + tamanioAdjuntos;
 	}
+	
+	public boolean contiene(String texto) {
+		return getTitulo().contains(texto) || getCuerpo().contains(texto);	
+	}
 }

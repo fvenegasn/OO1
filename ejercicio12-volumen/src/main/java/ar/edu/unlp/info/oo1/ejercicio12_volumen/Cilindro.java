@@ -20,12 +20,10 @@ public class Cilindro extends Pieza{
 	}
 	
 	public double getVolumen() {
-		double volumen = Math.PI*radio*radio*altura;
-		return volumen;
+		return Math.PI*radio*radio*altura;
 	}
 	
 	public double getSuperficieExterna() {
-		double superficieExterna = 2*Math.PI*radio*altura+2*Math.PI*radio*radio;
-		return superficieExterna;
+		return 2*Math.PI*radio*altura+2*Math.PI*radio*radio;
 	}
 }

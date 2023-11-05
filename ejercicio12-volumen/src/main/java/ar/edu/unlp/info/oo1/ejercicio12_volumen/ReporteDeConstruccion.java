@@ -21,13 +21,9 @@ public class ReporteDeConstruccion {
 	Retorna la suma de los volúmenes de todas las piezas hechas en ese material"
 	*/
 	public double getVolumenDeMaterial(String material) {
-		// filtro el listado de piezas por mi material
-		List<Pieza> containMaterial = piezas.stream()
-				.filter(pieza -> pieza.getMaterial() == material)
-				.collect(Collectors.toList());
-	
-		// obtengo la suma
-		return containMaterial.stream()
+		// filtro el listado de piezas por mi material y obtengo la suma
+		return piezas.stream()
+				.filter(pieza -> pieza.getMaterial().equals(material))
 				.mapToDouble(pieza -> pieza.getVolumen())
 				.sum();
 	}
@@ -37,13 +33,9 @@ public class ReporteDeConstruccion {
 	Retorna la suma de las superficies externas de todas las piezas pintadas con ese color".
 	*/
 	public double getSuperficieDeColor(String color) {
-		// filtro por color
-		List<Pieza> containColor = piezas.stream()
-				.filter(pieza -> pieza.getColor() == color)
-				.collect(Collectors.toList());
-		
-		// obtengo la suma
-		return containColor.stream()
+		// filtro por color y hago la suma
+		return piezas.stream()
+				.filter(pieza -> pieza.getColor().equals(color))
 				.mapToDouble(pieza -> pieza.getSuperficieExterna())
 				.sum();
 	}

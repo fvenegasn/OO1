@@ -39,14 +39,14 @@ public class Carpeta {
 	public int espacioOcupado() {
 		return this.emails.stream()
 				.mapToInt(email -> email.getTamanio())
-				.sum(); // deberia agregarle el espacio que ocupa el nombre de la carpeta?
+				.sum(); // deberia agregarle el espacio que ocupa el nombre de la carpeta? -> no pq no aclara enunciado
 	}
 	
 	// retorna el primer email que encuentra cuyo título o cuerpo contienen el texto indicado como parámetro. 
 	// Busca en todas las carpetas.
 	public Email buscar (String texto) {
 		return this.getEmails().stream()
-				.filter(email -> email.getTitulo().contains(texto) || email.getCuerpo().contains(texto))
+				.filter(email -> email.contiene(texto))
 				.findFirst().orElse(null);
 	}	
 }

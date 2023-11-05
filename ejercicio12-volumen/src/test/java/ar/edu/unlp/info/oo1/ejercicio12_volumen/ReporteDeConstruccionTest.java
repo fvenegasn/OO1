@@ -1,6 +1,6 @@
 package ar.edu.unlp.info.oo1.ejercicio12_volumen;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,12 +27,14 @@ public class ReporteDeConstruccionTest {
 	public void testVolumenDeMaterial() {
 		assertEquals(this.cilindro.getVolumen(), this.reporte.getVolumenDeMaterial("Acero"));
 		assertEquals((this.esfera.getVolumen() + this.prisma.getVolumen()), this.reporte.getVolumenDeMaterial("Hierro"));
+		assertEquals(this.reporte.getVolumenDeMaterial("Madera"),0);
 	}
 	
 	@Test
 	public void testSuperficieDeMaterial() {
 		assertEquals(this.cilindro.getSuperficieExterna(), this.reporte.getSuperficieDeColor("Plateado"));
 		assertEquals((this.esfera.getSuperficieExterna() + this.prisma.getSuperficieExterna()), this.reporte.getSuperficieDeColor("Gris"));
+		assertEquals(this.reporte.getSuperficieDeColor("Madera"),0);
 	}
 	
 }

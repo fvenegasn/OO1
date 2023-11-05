@@ -26,12 +26,10 @@ public class PrismaRectangular extends Pieza{
 	}
 	
 	public double getVolumen() {
-		double volumen = ladoMayor*ladoMenor*altura;
-		return volumen;
+		return ladoMayor*ladoMenor*altura;
 	}
 	
 	public double getSuperficieExterna() {
-		double superficieExterna = 2*(ladoMayor*ladoMenor+ladoMayor*altura+ladoMenor*altura);
-		return superficieExterna;		
+		return 2*(ladoMayor*ladoMenor+ladoMayor*altura+ladoMenor*altura);		
 	}
 }

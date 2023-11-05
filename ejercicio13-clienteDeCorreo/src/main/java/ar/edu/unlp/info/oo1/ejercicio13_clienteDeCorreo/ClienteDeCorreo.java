@@ -11,6 +11,7 @@ public class ClienteDeCorreo {
 	public ClienteDeCorreo() { // el inbox cuenta como una carpeta de la lista carpetas?
 		this.inbox = new Carpeta("inbox");
 		this.carpetas = new ArrayList<Carpeta>();
+		this.carpetas.add(inbox);
 	}
 	
 	// almacena en el inbox (una de las carpetas) el email que recibe como parámetro
@@ -22,31 +23,30 @@ public class ClienteDeCorreo {
 	// (asuma que el email está en la carpeta origen cuando se recibe este mensaje).
 	public void mover (Email email, Carpeta origen, Carpeta destino) {
 		origen.quitarEmail(email);
-		destino.agregarEmail(email); // qué pasa si la carpeta destino no existe?
+		destino.agregarEmail(email); // qué pasa si la carpeta destino no existe? -> se asume que siempre existe
 	}
 	
 	// retorna el primer email que encuentra cuyo título o cuerpo contienen el texto indicado como parámetro. 
 	// Busca en todas las carpetas.
 	public Email buscar (String texto) {
-		// busco en el inbox
-		Email emailBuscado = this.inbox.buscar(texto);
-		// si no está en el inbox
-		if (emailBuscado == null) {
-			// busco en otras carpetas
-			emailBuscado = this.carpetas.stream()
+		return this.carpetas.stream()
 					.map(carpeta -> carpeta.buscar(texto))
 					.filter(email->email != null)
 					.findFirst().orElse(null);
-		}
-		return emailBuscado;
 	}
 
 	// retorna la suma del espacio ocupado por todos los emails de todas las carpetas.
 	public int espacioOcupado() {
-		int tamanioInbox = this.inbox.espacioOcupado();
-		int tamanioCarpetas = this.carpetas.stream()
+		return this.carpetas.stream()
 				.mapToInt(carpeta -> carpeta.espacioOcupado())
 				.sum();
-		return tamanioInbox + tamanioCarpetas;
+	}
+	
+	public void agregarCarpeta(Carpeta carpeta) {
+		this.carpetas.add(carpeta);
+	}
+	
+	public List<Carpeta> getCarpetas(){
+		return this.carpetas;
 	}
 }
