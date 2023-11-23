@@ -58,11 +58,11 @@ public class Distribuidora {
 		return cliente.costoTotal(inicio, fin);
 	}
 	
-	public List<Cliente> clientesConMayorCosto(){ // pendiente
+	public List<Cliente> clientesConMayorCosto(){
 		return clientes.stream()
-				.sorted((cl1, cl2) -> cl1.costoTotal(LocalDate.now().minusDays(30), LocalDate.now())
-						.compareTo(cl2.costoTotal(LocalDate.now().minusDays(30), LocalDate.now()))
+				.sorted(((cl1, cl2) -> cl2.costoTotal(LocalDate.now().minusDays(30), LocalDate.now())
+						.compareTo(cl1.costoTotal(LocalDate.now().minusDays(30), LocalDate.now()))
 				.limit(5)
-				.collect(Collectors.toList()));
+				.collect(Collectors.toList());
 	}
 }

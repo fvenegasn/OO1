@@ -24,6 +24,10 @@ public class Pedido {
 		return items;
 	}
 	
+	public LocalDate getFechaPedido() {
+		return fechaPedido;
+	}
+	
 	public double costoTotal() {
 		return items.stream()
 				.mapToDouble(item -> item.costoTotal())

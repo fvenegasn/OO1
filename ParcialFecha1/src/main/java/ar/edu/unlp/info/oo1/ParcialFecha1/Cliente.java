@@ -26,6 +26,7 @@ public class Cliente {
 	
 	public double costoTotal(LocalDate inicio, LocalDate fin) {
 		return pedidos.stream()
+				.filter(pedido -> pedido.getFechaPedido().isAfter(inicio) && pedido.getFechaPedido().isBefore(fin))
 				.mapToDouble(pedido -> pedido.costoTotal())
 				.sum();
 	}
